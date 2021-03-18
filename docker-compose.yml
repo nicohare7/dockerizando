@@ -1,0 +1,27 @@
+version: "3"
+ 
+services:
+  miservicio_mysql:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: "facturacion"
+      MYSQL_ROOT_PASSWORD: "12345"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "12345"
+    volumes:
+      # Montamos un volumen para MySQL para no perder los datos de bd
+      - ./volumenes/mysql:/var/lib/mysql
+    ports:
+      - 9080:3306
+   
+  miservicio_php:
+    image: php:7-apache
+    restart: always
+    volumes:
+      # Montamos nuestra web desde fuera en el directorio web del contenedor
+      - ./miweb/:/var/www/html
+    ports:
+      - 86:80
+    links: 
+      - miservicio_mysql
