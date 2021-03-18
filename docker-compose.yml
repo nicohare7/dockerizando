@@ -9,10 +9,10 @@ services:
     ports:
       - "3309:3309"
     environment:
-      MYSQL_USER: devdb
-      MYSQL_ROOT_PASSWORD: Jmerazo96*
+      MYSQL_USER: bd
+      MYSQL_ROOT_PASSWORD: arley2233
       MYSQL_DATABASE: facturacion
-      MYSQL_PASSWORD: Jmerazo96*
+      MYSQL_PASSWORD: arley2233
     volumes:
       - ./sql/facturacion.sql:/docker-entrypoint-initdb.d/facturacion.sql
 
